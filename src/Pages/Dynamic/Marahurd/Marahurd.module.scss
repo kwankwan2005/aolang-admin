@@ -1,0 +1,70 @@
+.btn-wrapper {
+    margin-top: 8vh;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.btn {
+    font-size: 2rem;
+    color: white;
+    background-color: var(--primitive-color);
+    padding: 5px;
+    border-radius: 999px;
+}
+
+.update-btn {
+    background-color: var(--correct);
+}
+
+.delete-btn {
+    background-color: var(--wrong);
+}
+
+.text-input {
+    width: 300px;
+    border: 1px dashed var(--primitive-color);
+    padding-left: 5px;
+    font-size: 2rem;
+}
+
+.small-text-input {
+    width: 100px;
+    border: 1px dashed var(--primitive-color);
+    padding-left: 5px;
+    font-size: 2rem;
+}
+
+.input {
+    background-color: pink;
+    font-size: 2rem;
+    margin-left: 10px;
+}
+
+.checkbox {
+    margin-left: 5px;
+    margin-right: 5px;
+    border: 1px solid blue;
+}
+
+.small-wrapper {
+    padding-top: 30px;
+    margin-top: 10px;
+}
+
+.fixed {
+    position: fixed;
+    background-color: white;
+    width: 100%;
+}
+
+.top1 {
+    top: 0vh;
+}
+
+.top2 {
+    top: 11.7vh;
+}
+
+.list-question {
+    margin-top: 25vh;
+}

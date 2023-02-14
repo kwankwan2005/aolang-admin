@@ -1,0 +1,28 @@
+.wrapper {
+    align-items: center;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.page-btn {
+    align-items: center;
+    background-color: #ff0;
+    display: flex;
+    height: 20px;
+    justify-content: center;
+    margin: 0 5px;
+    width: 40px;
+}
+
+.page-no {
+    font-size: 1.8rem;
+    margin: 0 8px;
+    text-align: right;
+    width: 60px;
+}
+
+.content-per-page {
+    width: 70px;
+    font-family: Work Sans;
+    font-size: 2rem;
+}

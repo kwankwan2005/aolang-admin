@@ -1,0 +1,52 @@
+.wrapper {
+    margin-top: 8vh;
+    margin-left: 10px;
+}
+
+.btn-wrapper {
+    margin-top: 8vh;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.btn {
+    font-size: 2rem;
+    color: white;
+    background-color: var(--primitive-color);
+    padding: 5px;
+    border-radius: 999px;
+}
+
+.text-input {
+    width: 300px;
+    border: 1px dashed var(--primitive-color);
+    padding-left: 5px;
+    font-size: 2rem;
+}
+
+.short-text-input {
+    width: 100px;
+}
+
+.field-input {
+    width: 400px;
+    font-size: 2rem;
+    display: block;
+    color: var(--primitive-color);
+    font-weight: 600;
+}
+
+.member-header-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.member-header-image {
+    height: 18.3vh;
+    width: 18.3vh;
+    border-radius: 50%;
+}
+
+.member-header-info {
+    margin-left: 20px;
+}

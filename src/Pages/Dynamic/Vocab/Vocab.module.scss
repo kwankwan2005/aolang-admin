@@ -1,0 +1,28 @@
+.btn-wrapper {
+    margin-top: 8vh;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.btn {
+    font-size: 2rem;
+    color: white;
+    background-color: var(--primitive-color);
+    padding: 5px;
+    border-radius: 999px;
+}
+
+.update-btn {
+    background-color: var(--correct);
+}
+
+.delete-btn {
+    background-color: var(--wrong);
+}
+
+.text-input {
+    width: 300px;
+    border: 1px dashed var(--primitive-color);
+    padding-left: 5px;
+    font-size: 2rem;
+}

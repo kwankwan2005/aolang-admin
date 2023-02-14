@@ -1,0 +1,33 @@
+.wrapper {
+    margin-top: 8vh;
+    display: flex;
+    margin-left: 20vh;
+}
+
+span {
+    font-weight: 600;
+}
+
+.reason {
+    font-size: 1.8rem;
+    width: 70vw;
+    height: 200px;
+    border: 1px dashed var(--primitive-color);
+    padding: 5px;
+}
+
+.approve-btn {
+    padding: 2vh 2vh;
+    color: white;
+    border-radius: 30px;
+    font-size: 2rem;
+    margin-left: 2vh;
+}
+
+.yes-btn {
+    background-color: var(--correct);
+}
+
+.no-btn {
+    background-color: var(--wrong);
+}

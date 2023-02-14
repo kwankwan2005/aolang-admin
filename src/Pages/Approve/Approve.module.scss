@@ -1,0 +1,36 @@
+.report-wrapper {
+    align-items: center;
+    display: flex;
+    margin: 10px 4px 0;
+}
+
+.report-info-item {
+    display: flex;
+    flex: 1 1;
+    flex-direction: column;
+    margin-left: 5px;
+}
+
+.message {
+    flex: 1 1;
+    min-height: 150px;
+    padding: 4px;
+    font-size: 2rem;
+    border-bottom: 1px dashed var(--primitive-color);
+}
+
+.approve-btn {
+    padding: 2vh 2vh;
+    color: white;
+    border-radius: 30px;
+    font-size: 2rem;
+    margin-left: 2vh;
+}
+
+.yes-btn {
+    background-color: var(--correct);
+}
+
+.no-btn {
+    background-color: var(--wrong);
+}

@@ -1,0 +1,75 @@
+.wrapper {
+    margin-top: 15.2vh;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.form-wrapper {
+    margin-right: 9vh;
+    width: 85.37vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+}
+
+.field-label {
+    font-weight: 700;
+    color: var(--primitive-text-color);
+    margin-left: 1.85vh;
+}
+
+.field-input {
+    border: 1.5px solid var(--primitive-color);
+    border-radius: 1.5vh;
+    height: 8.15vh;
+    font-size: 2.5rem;
+    padding: 1vh;
+    font-family: var(--primitive-font-family);
+}
+
+.validate-info {
+    color: red;
+    font-size: 1.5rem;
+    margin-left: 1.85vh;
+}
+
+.register-button {
+    width: 85.37vh;
+    height: 8.33vh;
+    background-color: var(--primitive-color);
+    color: white;
+    font-weight: 700;
+    font-size: 2.5rem;
+    margin-top: 3vh;
+    border-radius: 1.5vh;
+}
+
+.logo {
+    width: 37.5vw;
+    height: 37.5vw;
+}
+
+.remember-login {
+    color: var(--primitive-text-color);
+    margin-left: 1.67vh;
+}
+
+.login-field {
+    margin-bottom: 2.7vh;
+}
+
+.eyes {
+    width: 50px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+}
+
+.checkbox-login-wrapper {
+    display: flex;
+    justify-content: space-between;
+}

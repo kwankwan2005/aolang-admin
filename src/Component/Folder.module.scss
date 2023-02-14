@@ -1,0 +1,31 @@
+.main-wrapper {
+    margin-top: 8vh;
+    display: flex;
+    height: 92vh;
+    align-items: center;
+}
+
+.logo {
+    height: 39.375vw;
+    width: 39.375vw;
+}
+
+.block-wrapper {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 5vh;
+    width: 60.625vw;
+}
+
+.item-wrapper {
+    background-color: var(--primitive-color);
+    border-radius: 999px;
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 700;
+    height: 3.51vh;
+    margin-bottom: 2.59vh;
+    margin-top: 0.74vh;
+    text-align: center;
+    width: 11.5625vw;
+}
