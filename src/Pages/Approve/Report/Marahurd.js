@@ -27,7 +27,6 @@ function Marahurd() {
         credit: '',
         difficulty: 10,
         type: 'marathon',
-        credit: '',
         isInclusive: 0,
     });
     const [message, setMessage] = useState('');
@@ -151,6 +150,7 @@ function Marahurd() {
                             <p className={cx('report-info-item')}>Báo cáo: {question.report}</p>
                             <p className={cx('report-info-item')}>Tên đăng nhập: {question.username}</p>
                             <p className={cx('report-info-item')}>Tên: {question.fullname}</p>
+                            <p className={cx('report-info-item')}>Thời gian: {question.time}</p>
                             <div className={cx('report-info-item')}>
                                 <p>Tin nhắn</p>
                                 <textarea

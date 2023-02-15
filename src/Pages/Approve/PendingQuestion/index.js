@@ -151,6 +151,7 @@ function PendingQuestion() {
                             </Popup>
                             <p className={cx('report-info-item')}>Tên đăng nhập: {question.username}</p>
                             <p className={cx('report-info-item')}>Tên: {question.fullname}</p>
+                            <p className={cx('report-info-item')}>Thời gian: {question.time}</p>
                             <div className={cx('report-info-item')}>
                                 <p>Tin nhắn</p>
                                 <textarea
