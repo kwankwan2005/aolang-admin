@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
-import Popup from 'reactjs-popup';
 import classNames from 'classnames/bind';
 import styles from './Marahurd.module.scss';
 import Header from '../../../Component/Header';
 import { request } from '../../../warehouse';
 import Page from '../../../Component/Page';
+import ConfirmPopup from '../../../Component/ConfirmPopup';
 
 const cx = classNames.bind(styles);
 
@@ -140,50 +140,24 @@ function Tag() {
                     onChange={(e) => setNewPrice(e.target.value)}
                     type="number"
                 />
-                <Popup
-                    modal
+                <ConfirmPopup
+                    document={document}
+                    handling={toAddPackage}
+                    question={`Bạn có muốn thêm gói ${newTagName} không?`}
                     trigger={<button className={cx('btn')}>Thêm một gói</button>}
-                    onOpen={() => document.getElementById('captain').classList.add('popupOpen')}
-                    onClose={() => document.getElementById('captain').classList.remove('popupOpen')}
-                >
-                    {(close) => (
-                        <div className="popup-wrapper">
-                            <p>Bạn có muốn thêm gói {newTagName} không?</p>
-                            <div className={cx('popup-header')}>
-                                <button className="popup-btn wrong-color" onClick={close}>
-                                    Không
-                                </button>
-                                <button className="popup-btn correct-color" onClick={() => toAddPackage()}>
-                                    Có
-                                </button>
-                            </div>
-                            {saveStates !== '' && <p className="save-successfully">{saveStates}</p>}
-                        </div>
-                    )}
-                </Popup>
+                    setSaveStates={setSaveStates}
+                    saveStates={saveStates}
+                />
             </div>
             <div className={cx('btn-wrapper', 'fixed', 'small-wrapper', 'top2')}>
-                <Popup
-                    modal
+                <ConfirmPopup
+                    document={document}
+                    handling={toSaveQuestion}
+                    question="Bạn có muốn lưu các câu hỏi ở gói này không?"
                     trigger={<button className={cx('btn')}>Lưu danh sách câu hỏi</button>}
-                    onOpen={() => document.getElementById('captain').classList.add('popupOpen')}
-                    onClose={() => document.getElementById('captain').classList.remove('popupOpen')}
-                >
-                    {(close) => (
-                        <div className="popup-wrapper">
-                            <p>Bạn có muốn lưu các câu hỏi ở gói này không?</p>
-                            <div className={cx('popup-header')}>
-                                <button className="popup-btn wrong-color" onClick={close}>
-                                    Không
-                                </button>
-                                <button className="popup-btn correct-color" onClick={() => toSaveQuestion()}>
-                                    Có
-                                </button>
-                            </div>
-                            {saveStates !== '' && <p className="save-successfully">{saveStates}</p>}
-                        </div>
-                    )}
-                </Popup>
+                    setSaveStates={setSaveStates}
+                    saveStates={saveStates}
+                />
                 <div>
                     <input type="checkbox" checked={remove} onChange={(e) => setRemove(e.target.checked)} />
                     Loại bỏ câu không cùng gói

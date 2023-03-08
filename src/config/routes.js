@@ -29,7 +29,10 @@ const routes = {
             file: '/admin/dynamic/vocab/file',
         },
     },
-    static: {},
+    static: {
+        _: '/admin/static',
+        content: '/admin/static/content',
+    },
     file: {},
 };
 

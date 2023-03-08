@@ -17,6 +17,8 @@ import { default as VocabWebsite } from '../Dynamic/Vocab/Website';
 import { default as VocabFile } from '../Dynamic/Vocab/File';
 import Manage from '../User/Manage';
 import Tag from '../Dynamic/Marahurd/Tag';
+import Static from '../Static';
+import Content from '../Static/Content';
 
 const publicRoutes = [
     { path: config.routes.home, component: Home },
@@ -37,6 +39,8 @@ const publicRoutes = [
     { path: config.routes.dynamic.vocab._, component: Vocab },
     { path: config.routes.dynamic.vocab.website, component: VocabWebsite },
     { path: config.routes.dynamic.vocab.file, component: VocabFile },
+    { path: config.routes.static._, component: Static },
+    { path: config.routes.static.content, component: Content },
 ];
 
 const privateRoutes = [];

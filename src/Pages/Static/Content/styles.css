@@ -1,0 +1,13 @@
+.ql-editor {
+    font-family: var(--primitive-font-family);
+    position: relative;
+    top: 8.5rem;
+}
+
+.ql-toolbar {
+    position: fixed;
+    background-color: white;
+    z-index: 1;
+    top: 4rem;
+    width: 100%;
+}

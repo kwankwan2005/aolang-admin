@@ -1,5 +1,4 @@
 import classNames from 'classnames/bind';
-import Popup from 'reactjs-popup';
 import * as xlsx from 'xlsx';
 import styles from './Marahurd.module.scss';
 import Header from '../../../Component/Header';
@@ -7,6 +6,7 @@ import { useState } from 'react';
 import { request, getCookie } from '../../../warehouse';
 import { useNavigate } from 'react-router-dom';
 import config from '../../../config';
+import ConfirmPopup from '../../../Component/ConfirmPopup';
 
 const cx = classNames.bind(styles);
 
@@ -57,69 +57,30 @@ function File() {
             <div id="captain">
                 <Header path="/dynamic/marahurd/file" />
                 <div className={cx('btn-wrapper')}>
-                    <Popup
-                        modal
+                    <ConfirmPopup
+                        document={document}
+                        handling={toInsert}
                         trigger={<button className={cx('btn')}>Thêm câu hỏi</button>}
-                        onOpen={() => document.getElementById('captain').classList.add('popupOpen')}
-                        onClose={() => document.getElementById('captain').classList.remove('popupOpen')}
-                    >
-                        {(close) => (
-                            <div className="popup-wrapper">
-                                <p>Bạn có muốn thêm không?</p>
-                                <div className={cx('popup-header')}>
-                                    <button className="popup-btn wrong-color" onClick={close}>
-                                        Không
-                                    </button>
-                                    <button className="popup-btn correct-color" onClick={() => toInsert()}>
-                                        Có
-                                    </button>
-                                </div>
-                                {saveStates !== '' && <p className="save-successfully">{saveStates}</p>}
-                            </div>
-                        )}
-                    </Popup>
-                    <Popup
-                        modal
+                        saveStates={saveStates}
+                        setSaveStates={setSaveStates}
+                        question="Bạn có muốn thêm không?"
+                    />
+                    <ConfirmPopup
+                        document={document}
+                        handling={toUpdate}
                         trigger={<button className={cx('btn')}>Sửa câu hỏi</button>}
-                        onOpen={() => document.getElementById('captain').classList.add('popupOpen')}
-                        onClose={() => document.getElementById('captain').classList.remove('popupOpen')}
-                    >
-                        {(close) => (
-                            <div className="popup-wrapper">
-                                <p>Bạn có muốn sửa không?</p>
-                                <div className={cx('popup-header')}>
-                                    <button className="popup-btn wrong-color" onClick={close}>
-                                        Không
-                                    </button>
-                                    <button className="popup-btn correct-color" onClick={() => toUpdate()}>
-                                        Có
-                                    </button>
-                                </div>
-                                {saveStates !== '' && <p className="save-successfully">{saveStates}</p>}
-                            </div>
-                        )}
-                    </Popup>
-                    <Popup
-                        modal
+                        saveStates={saveStates}
+                        setSaveStates={setSaveStates}
+                        question="Bạn có muốn sửa không?"
+                    />
+                    <ConfirmPopup
+                        document={document}
+                        handling={toDelete}
                         trigger={<button className={cx('btn')}>Xóa câu hỏi</button>}
-                        onOpen={() => document.getElementById('captain').classList.add('popupOpen')}
-                        onClose={() => document.getElementById('captain').classList.remove('popupOpen')}
-                    >
-                        {(close) => (
-                            <div className="popup-wrapper">
-                                <p>Bạn có muốn xóa không?</p>
-                                <div className={cx('popup-header')}>
-                                    <button className="popup-btn wrong-color" onClick={close}>
-                                        Không
-                                    </button>
-                                    <button className="popup-btn correct-color" onClick={() => toDelete()}>
-                                        Có
-                                    </button>
-                                </div>
-                                {saveStates !== '' && <p className="save-successfully">{saveStates}</p>}
-                            </div>
-                        )}
-                    </Popup>
+                        saveStates={saveStates}
+                        setSaveStates={setSaveStates}
+                        question="Bạn có muốn xóa không?"
+                    />
                     <button className={cx('btn')} onClick={() => toExport()}>
                         Xuất câu hỏi
                     </button>

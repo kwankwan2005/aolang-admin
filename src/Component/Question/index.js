@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFileArrowUp, faPhotoFilm } from '@fortawesome/free-solid-svg-icons';
 import Popup from 'reactjs-popup';
+import ConfirmPopup from '../ConfirmPopup';
 import { getCookie, request, HOST_URL } from '../../warehouse';
 import CustomizeAudio from '../../Component/CustomizeAudio';
 import classNames from 'classnames/bind';
@@ -250,32 +251,14 @@ function Question({ aQuestion, setQuestion }) {
                         <button className={cx('btn')} onClick={() => toAddATag()}>
                             Thêm một lĩnh vực
                         </button>
-                        <Popup
-                            modal
+                        <ConfirmPopup
+                            document={document}
                             trigger={<button className={cx('btn')}>Lưu lĩnh vực</button>}
-                            onOpen={() => document.getElementById('captain').classList.add('popupOpen')}
-                            onClose={() => document.getElementById('captain').classList.remove('popupOpen')}
-                        >
-                            {(close) => (
-                                <div className="popup-wrapper">
-                                    <p>Bạn thực sự muốn lưu danh sách lĩnh vực không?</p>
-                                    <div className={cx('popup-header')}>
-                                        <button className="popup-btn wrong-color" onClick={close}>
-                                            Không
-                                        </button>
-                                        <button
-                                            className="popup-btn correct-color"
-                                            onClick={() => {
-                                                toSaveTag();
-                                            }}
-                                        >
-                                            Có
-                                        </button>
-                                    </div>
-                                    {saveStates !== '' && <p className="save-successfully">{saveStates}</p>}
-                                </div>
-                            )}
-                        </Popup>
+                            saveStates={saveStates}
+                            setSaveStates={setSaveStates}
+                            question="Bạn thực sự muốn lưu danh sách lĩnh vực không?"
+                            handling={toSaveTag}
+                        />
                     </div>
                 </>
             )}

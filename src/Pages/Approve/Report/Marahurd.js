@@ -5,9 +5,9 @@ import Page from '../../../Component/Page';
 import { request, getCookie } from '../../../warehouse';
 import styles from '../Approve.module.scss';
 import Header from '../../../Component/Header';
-import Popup from 'reactjs-popup';
 import { useNavigate } from 'react-router-dom';
 import config from '../../../config';
+import ConfirmPopup from '../../../Component/ConfirmPopup';
 
 const cx = classNames.bind(styles);
 
@@ -83,6 +83,16 @@ function Marahurd() {
         request.post('/user/lotus.php', payload).then((res) => {});
     };
 
+    const confirmYes = () => {
+        toApprove(question.id, 2);
+        document.getElementById('captain').classList.remove('popupOpen');
+    };
+
+    const confirmNo = () => {
+        toApprove(question.id, 1);
+        document.getElementById('captain').classList.remove('popupOpen');
+    };
+
     if (getCookie().isadminlogin) {
         return (
             <div id="captain">
@@ -91,62 +101,22 @@ function Marahurd() {
                     <div key={question.reportId}>
                         <Question aQuestion={question} setQuestion={setQuestion} />
                         <div>
-                            <Popup
-                                modal
+                            <ConfirmPopup
+                                document={document}
+                                handling={confirmYes}
+                                question="Bạn thực sự muốn duyệt không?"
+                                saveStates={saveStates}
+                                setSaveStates={setSaveStates}
                                 trigger={<button className={cx('approve-btn', 'yes-btn')}>Duyệt</button>}
-                                onOpen={() => document.getElementById('captain').classList.add('popupOpen')}
-                                onClose={() => document.getElementById('captain').classList.remove('popupOpen')}
-                            >
-                                {(close) => (
-                                    <div className="popup-wrapper">
-                                        <p>Bạn thực sự muốn duyệt không?</p>
-                                        <div className={cx('popup-header')}>
-                                            <button className="popup-btn wrong-color" onClick={close}>
-                                                Không
-                                            </button>
-                                            <button
-                                                className="popup-btn correct-color"
-                                                onClick={() => {
-                                                    toApprove(question.id, 2);
-                                                    document.getElementById('captain').classList.remove('popupOpen');
-                                                    // close();
-                                                }}
-                                            >
-                                                Có
-                                            </button>
-                                        </div>
-                                        {saveStates !== '' && <p className="save-successfully">{saveStates}</p>}
-                                    </div>
-                                )}
-                            </Popup>
-                            <Popup
-                                modal
-                                trigger={<button className={cx('approve-btn', 'no-btn')}>Không duyệt</button>}
-                                onOpen={() => document.getElementById('captain').classList.add('popupOpen')}
-                                onClose={() => document.getElementById('captain').classList.remove('popupOpen')}
-                            >
-                                {(close) => (
-                                    <div className="popup-wrapper">
-                                        <p>Bạn thực sự muốn từ chối không?</p>
-                                        <div className={cx('popup-header')}>
-                                            <button className="popup-btn wrong-color" onClick={close}>
-                                                Không
-                                            </button>
-                                            <button
-                                                className="popup-btn correct-color"
-                                                onClick={() => {
-                                                    toApprove(question.id, 1);
-                                                    document.getElementById('captain').classList.remove('popupOpen');
-                                                    // close();
-                                                }}
-                                            >
-                                                Có
-                                            </button>
-                                        </div>
-                                        {saveStates !== '' && <p className="save-successfully">{saveStates}</p>}
-                                    </div>
-                                )}
-                            </Popup>
+                            />
+                            <ConfirmPopup
+                                document={document}
+                                handling={confirmNo}
+                                question="Bạn thực sự muốn từ chối không?"
+                                saveStates={saveStates}
+                                setSaveStates={setSaveStates}
+                                trigger={<button className={cx('approve-btn', 'yes-btn')}>Không duyệt</button>}
+                            />
                             <p className={cx('report-info-item')}>Báo cáo: {question.report}</p>
                             <p className={cx('report-info-item')}>Tên đăng nhập: {question.username}</p>
                             <p className={cx('report-info-item')}>Tên: {question.fullname}</p>

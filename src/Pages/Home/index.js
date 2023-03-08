@@ -22,7 +22,9 @@ function Home() {
                             <Link to={config.routes.dynamic._} className={cx('item-wrapper')}>
                                 Nội dung động
                             </Link>
-                            <a className={cx('item-wrapper')}>Nội dung tĩnh</a>
+                            <Link to={config.routes.static._} className={cx('item-wrapper')}>
+                                Nội dung tĩnh
+                            </Link>
                             <Link to={config.routes.approve._} className={cx('item-wrapper')}>
                                 Duyệt đóng góp
                             </Link>

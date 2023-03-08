@@ -5,9 +5,9 @@ import Page from '../../../Component/Page';
 import { request, useDebounce, getCookie } from '../../../warehouse';
 import styles from './Vocab.module.scss';
 import Header from '../../../Component/Header';
-import Popup from 'reactjs-popup';
 import { useNavigate } from 'react-router-dom';
 import config from '../../../config';
+import ConfirmPopup from '../../../Component/ConfirmPopup';
 
 const cx = classNames.bind(styles);
 
@@ -61,6 +61,7 @@ function Website() {
         request.post('/vocab/deleteAWord.php', payload).then((res) => {
             setSaveStates('Đã xóa thành công');
             setDone((prev) => !prev);
+            document.getElementById('captain').classList.remove('popupOpen');
         });
     };
 
@@ -72,59 +73,22 @@ function Website() {
                     <input className={cx('text-input')} value={search} onChange={(e) => setSearch(e.target.value)} />
                 </div>
                 <div className={cx('btn-wrapper')}>
-                    <Popup
-                        modal
+                    <ConfirmPopup
+                        document={document}
                         trigger={<button className={cx('btn', 'update-btn')}>Sửa câu hỏi</button>}
-                        onOpen={() => document.getElementById('captain').classList.add('popupOpen')}
-                        onClose={() => document.getElementById('captain').classList.remove('popupOpen')}
-                    >
-                        {(close) => (
-                            <div className="popup-wrapper">
-                                <p>Bạn có muốn sửa không?</p>
-                                <div className={cx('popup-header')}>
-                                    <button className="popup-btn wrong-color" onClick={close}>
-                                        Không
-                                    </button>
-                                    <button className="popup-btn correct-color" onClick={() => toUpdateQuestion()}>
-                                        Có
-                                    </button>
-                                </div>
-                                {saveStates !== '' && <p className="save-successfully">{saveStates}</p>}
-                            </div>
-                        )}
-                    </Popup>
-                    <Popup
-                        modal
-                        trigger={
-                            <button className={cx('btn', 'delete-btn')} onClick={() => toDeleteQuestion()}>
-                                Xóa câu hỏi
-                            </button>
-                        }
-                        onOpen={() => document.getElementById('captain').classList.add('popupOpen')}
-                        onClose={() => document.getElementById('captain').classList.remove('popupOpen')}
-                    >
-                        {(close) => (
-                            <div className="popup-wrapper">
-                                <p>Bạn thực sự muốn xóa không?</p>
-                                <div className={cx('popup-header')}>
-                                    <button className="popup-btn wrong-color" onClick={close}>
-                                        Không
-                                    </button>
-                                    <button
-                                        className="popup-btn correct-color"
-                                        onClick={() => {
-                                            toDeleteQuestion();
-                                            document.getElementById('captain').classList.remove('popupOpen');
-                                            close();
-                                        }}
-                                    >
-                                        Có
-                                    </button>
-                                </div>
-                                {saveStates !== '' && <p className="save-successfully">{saveStates}</p>}
-                            </div>
-                        )}
-                    </Popup>
+                        handling={toUpdateQuestion}
+                        question="Bạn có muốn sửa không?"
+                        saveStates={saveStates}
+                        setSaveStates={setSaveStates}
+                    />
+                    <ConfirmPopup
+                        document={document}
+                        trigger={<button className={cx('btn', 'delete-btn')}>Xóa câu hỏi</button>}
+                        handling={toDeleteQuestion}
+                        question="Bạn có thực sự muốn xóa không?"
+                        saveStates={saveStates}
+                        setSaveStates={setSaveStates}
+                    />
                 </div>
                 {questions.map((question) => (
                     <div key={question.id}>

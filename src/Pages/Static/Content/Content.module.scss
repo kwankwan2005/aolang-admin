@@ -1,0 +1,24 @@
+.btn-wrapper {
+    background-color: white;
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    display: flex;
+}
+
+.btn {
+    font-size: 2rem;
+    color: white;
+    background-color: var(--primitive-color);
+    padding: 5px;
+    border-radius: 999px;
+    margin: 5px 0 5px 5px;
+}
+
+.real-btn {
+    display: none;
+}
+
+.content {
+    font-family: var(--primitive-font-family);
+}
