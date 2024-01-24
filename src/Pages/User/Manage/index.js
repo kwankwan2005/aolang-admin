@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import * as xlsx from 'xlsx';
 import classNames from 'classnames/bind';
 import styles from './Manage.module.scss';
 import Header from '../../../Component/Header';
@@ -99,6 +100,31 @@ function Manage() {
         });
     };
 
+    const toExport = () => {
+        request
+            .get('/user/getNumberOfAccount2.php', {
+                params: {
+                    search: '',
+                },
+            })
+            .then((res) => {
+                request
+                    .get('/user/getListAccount2.php', {
+                        params: {
+                            start: 0,
+                            limit: res,
+                            search: '',
+                        },
+                    })
+                    .then((accountList) => {
+                        const worksheet = xlsx.utils.json_to_sheet(accountList);
+                        const workbook = xlsx.utils.book_new();
+                        xlsx.utils.book_append_sheet(workbook, worksheet, 'users');
+                        xlsx.writeFile(workbook, 'user.xlsx');
+                    });
+            });
+    };
+
     if (getCookie().isadminlogin) {
         return (
             <div>
@@ -137,7 +163,8 @@ function Manage() {
                                 {user.schoolName} - {user.districtname} - {user.provincename}
                             </p>
                             <p>Ngày sinh: {user.birthday}</p>
-
+                            <p>Địa chỉ IP: {user.ip}</p>
+                            <p>Tình trạng tài khoản: {user.ban == '1' ? "Đang hoạt động" : "Đã bị khóa"}</p>
                             <p>
                                 Admin:{' '}
                                 <input
@@ -278,6 +305,9 @@ function Manage() {
                                         </div>
                                     )}
                                 </Popup>
+                                <button className={cx('btn')} onClick={() => toExport()}>
+                                    Xuất dữ liệu tất cả user
+                                </button>
                             </div>
                         </div>
                     ))}
